@@ -42,7 +42,7 @@ graph LR
 
 ```bash
 # Download the latest binary
-curl -sfL [https://dl.sentic.io/agent/install.sh](https://dl.sentic.io/agent/install.sh) | sudo bash
+curl -sfL https://sentic.kevalabs.com/install.sh | sudo bash
 
 # Configure the upstream Brain
 sudo sentic-agent config --server "https://your-sentic-server:8080"
