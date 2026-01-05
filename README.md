@@ -41,13 +41,16 @@ graph LR
 ## Installation (Community Edition)
 
 ```bash
-# Download the latest binary
-curl -sfL https://sentic.kevalabs.com/install.sh | sudo bash
+You can install the agent directly from our public repository:
 
-# Configure the upstream Brain
+```bash
+# 1. Download and run the install script
+curl -sfL [https://raw.githubusercontent.com/kevalabs/sentic-agent/main/install.sh](https://raw.githubusercontent.com/kevalabs/sentic-agent/main/install.sh) | sudo bash
+
+# 2. Configure the upstream Brain
 sudo sentic-agent config --server "https://your-sentic-server:8080"
 
-# Start the service
+# 3. Start the service
 sudo systemctl start sentic-agent
 
 ```
