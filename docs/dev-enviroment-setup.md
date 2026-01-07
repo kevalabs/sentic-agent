@@ -11,7 +11,7 @@ brew install lima
 ```
 ### 2. Create a Sentic VM: Use the default Ubuntu template, ensuring the kernel is 5.15+ for optimal eBPF/LSM support.
 ```bash
-limactl start --name=sentic template://ubuntu
+limactl start --name=sentic template://ubuntu # any distro can be selected from https://lima-vm.io/docs/templates
 
 ```
 ### 3. VS Code Integration:
