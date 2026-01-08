@@ -14,7 +14,21 @@ brew install lima
 limactl start --name=sentic template://ubuntu # any distro can be selected from https://lima-vm.io/docs/templates
 
 ```
-### 3. VS Code Integration:
+### 3. Environment Initialization (Lima/Fedora)
+After the initial OS installation, you must synchronize the package manager and ensure essential network utilities are present. This prevents VS Code Remote-SSH installation failures.
+```bash
+
+# 1. Update package metadata and upgrade all system packages
+# This ensures you are running the latest kernel patches.
+sudo dnf upgrade --refresh -y
+
+# 2. Install essential utilities if missing
+# 'which' and 'wget' are required for VS Code Server to self-install.
+sudo dnf install -y wget which tar
+
+```
+
+### 4. VS Code Integration:
 - Install the "Remote - SSH" extension in VS Code.
 - Add your Lima VM to ~/.ssh/config:
 ```text
