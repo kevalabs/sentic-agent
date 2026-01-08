@@ -1,0 +1,41 @@
+[workspace]
+resolver = "2"
+members = [
+    "crates/sentic-agent",
+    "crates/sentic-ebpf",
+    "crates/sentic-common",
+    "crates/xtask",
+]
+
+[workspace.package]
+edition = "2024"
+version = "0.1.0"
+authors = ["Suraj <kevalabs>"]
+
+# ------------------------------------------------------------------------------
+# CRATE DEFINITIONS & RATIONALE:
+#
+# 1. crates/sentic-agent:
+#    WHAT: The main user-space daemon (The Memory & Voice).
+#    WHY:  It handles durable persistence (redb), network transmission (gRPC/mTLS),
+#          and manages the lifecycle of the eBPF programs. It must be isolated
+#          from kernel-space logic to maintain stability and security.
+#
+# 2. crates/sentic-ebpf:
+#    WHAT: The kernel-space probes (The Eye).
+#    WHY:  Written using Aya, these programs run inside the Linux kernel. They 
+#          must be in a separate crate because they require a different 
+#          compilation target (bpfel-unknown-none) and the nightly toolchain.
+#
+# 3. crates/sentic-common:
+#    WHAT: Shared data structures and constants.
+#    WHY:  This crate is used by BOTH the agent and the eBPF probes. By defining 
+#          event schemas (like ProcessEvent) here, we ensure that both the
+#          kernel and user space agree on the exact memory layout of events.
+#
+# 4. crates/xtask:
+#    WHAT: Custom build automation and developer tooling.
+#    WHY:  Compiling eBPF and embedding it into a Rust binary is complex. 
+#          xtask provides a standardized, one-command way (e.g., cargo xtask build)
+#          to handle bytecode generation and kernel header synchronization.
+# ------------------------------------------------------------------------------
