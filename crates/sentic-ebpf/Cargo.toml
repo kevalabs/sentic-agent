@@ -5,3 +5,13 @@ version.workspace = true
 authors.workspace = true
 
 [dependencies]
+# The core library for writing eBPF in Rust
+aya-ebpf = { git = "https://github.com/aya-rs/aya" }
+# High-performance logging from kernel to user-space
+aya-log-ebpf = { git = "https://github.com/aya-rs/aya" }
+# Our shared data contract
+sentic-common = { path = "../sentic-common" }
+
+[[bin]]
+name = "sentic"
+path = "src/main.rs"

@@ -5,3 +5,9 @@ version.workspace = true
 authors.workspace = true
 
 [dependencies]
+anyhow = "1"
+aya = { git = "https://github.com/aya-rs/aya" }
+aya-log = { git = "https://github.com/aya-rs/aya" }
+sentic-common = { path = "../sentic-common" }
+tokio = { version = "1", features = ["full"] }
+bytes = "1"

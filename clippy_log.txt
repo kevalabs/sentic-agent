@@ -1,0 +1,18 @@
+    Checking aya v0.13.2 (https://github.com/aya-rs/aya#b8ed06a4)
+    Checking sentic-ebpf v0.1.0 (/home/surajchhetry.linux/sentic/crates/sentic-ebpf)
+error: unused import: `MAX_COMM_LEN`
+  --> crates/sentic-ebpf/src/main.rs:10:59
+   |
+10 | use sentic_common::{SenticEvent, ProcessEvent, EventType, MAX_COMM_LEN};
+   |                                                           ^^^^^^^^^^^^
+   |
+   = note: `-D unused-imports` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_imports)]`
+
+error: unwinding panics are not supported without std
+  |
+  = help: using nightly cargo, use -Zbuild-std with panic="abort" to avoid unwinding
+  = note: since the core library is usually precompiled with panic="unwind", rebuilding your crate with panic="abort" may not be enough to fix the problem
+
+error: could not compile `sentic-ebpf` (bin "sentic") due to 2 previous errors
+warning: build failed, waiting for other jobs to finish...

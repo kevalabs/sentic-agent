@@ -1,0 +1,21 @@
+    Checking sentic-agent v0.1.0 (/home/surajchhetry.linux/sentic/crates/sentic-agent)
+error: unused variable: `e`
+  --> crates/sentic-agent/src/main.rs:96:25
+   |
+96 |                     Err(e) => {
+   |                         ^ help: if this is intentional, prefix it with an underscore: `_e`
+   |
+   = note: `-D unused-variables` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(unused_variables)]`
+
+error: redundant closure
+  --> crates/sentic-agent/src/main.rs:25:14
+   |
+25 |         .map(|p| Path::new(p))
+   |              ^^^^^^^^^^^^^^^^ help: replace the closure with the associated function itself: `Path::new`
+   |
+   = help: for further information visit https://rust-lang.github.io/rust-clippy/master/index.html#redundant_closure
+   = note: `-D clippy::redundant-closure` implied by `-D warnings`
+   = help: to override `-D warnings` add `#[allow(clippy::redundant_closure)]`
+
+error: could not compile `sentic-agent` (bin "sentic-agent") due to 2 previous errors
