@@ -30,6 +30,24 @@ graph LR
     B -- Batch Read --> T(gRPC transport)
     T -- mTLS Stream --> S[sentic server]
 ```
+
+### 📦 Component Breakdown
+
+* **crates/sentic-agent**
+  * **What:** The main user-space daemon (The Memory & Voice).
+  * **Why:** Handles durable persistence (redb), network transmission (gRPC/mTLS), and manages the lifecycle of eBPF programs. Isolated from kernel-space logic for stability.
+
+* **crates/sentic-ebpf**
+  * **What:** The kernel-space probes (The Eye).
+  * **Why:** Written using Aya, these run inside the Linux kernel. Requires a separate crate due to the `bpfel-unknown-none` target and nightly toolchain.
+
+* **crates/sentic-common**
+  * **What:** Shared data structures and constants.
+  * **Why:** Used by BOTH agent and eBPF probes. Ensures kernel and user space agree on event memory layout.
+
+* **crates/xtask**
+  * **What:** Custom build automation and developer tooling.
+  * **Why:** Standardizes eBPF compilation and embedding (e.g., `cargo xtask build`).
 ## 🛠️ Quick Start
 
 **Prerequisites**
