@@ -1,29 +1,29 @@
 use anyhow::{Context, Result};
 use std::process::Command;
 
-pub fn build_ebpf(release: bool) -> Result<()> {
-    let mut args = vec![
-        "build",
-        "--package",
-        "sentic-ebpf",
-        "--target",
-        "bpfel-unknown-none",
-        "-Z",
-        "build-std=core",
-    ];
+pub fn build_ebpf() -> Result<()> {
+    println!("🚀 Building Sentic eBPF probes...");
 
-    if release {
-        args.push("--release");
-    }
-
+    // We use the 'cargo build' command but with specific eBPF flags
     let status = Command::new("cargo")
-        .args(&args)
+        .args([
+            "+nightly",
+            "build",
+            "--package",
+            "sentic-ebpf",
+            "--target",
+            "bpfel-unknown-none",
+            "-Z",
+            "build-std=core",
+            "--release",
+        ])
         .status()
-        .context("Failed to run cargo build for sentic-ebpf")?;
+        .context("Failed to run cargo build for eBPF")?;
 
     if !status.success() {
-        anyhow::bail!("Failed to build eBPF component");
+        anyhow::bail!("eBPF build failed with status: {}", status);
     }
 
+    println!("✅ eBPF bytecode generated successfully.");
     Ok(())
 }
