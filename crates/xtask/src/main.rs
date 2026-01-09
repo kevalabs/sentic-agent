@@ -24,7 +24,7 @@ fn main() -> Result<()> {
             build_ebpf::build_ebpf()?;
         }
         Command::Build => {
-            println!("Build agent logic to be implemented");
+            println!("✅ Build agent logic to be implemented");
         }
     }
 

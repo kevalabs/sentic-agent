@@ -25,5 +25,6 @@ pub fn build_ebpf() -> Result<()> {
     }
 
     println!("✅ eBPF bytecode generated successfully.");
+
     Ok(())
 }
