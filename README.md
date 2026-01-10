@@ -56,6 +56,8 @@ graph LR
 
 * SystemD
 
+* bpftool (Required for debugging and inspection)
+
 ## Installation (Community Edition)
 
 ```bash
