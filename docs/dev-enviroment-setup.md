@@ -71,4 +71,9 @@ cargo install aya-tool
 
 # 4. Install LLVM/Clang (Required for some eBPF compilation) [cite: 317, 327]
 sudo apt update && sudo apt install -y clang llvm libelf-dev
+
+# 5. Install bpftool (Essential for kernel introspection and map debugging)
+sudo apt update && sudo apt install -y bpftool  # For Ubuntu/WSL2
+sudo dnf install -y bpftool                      # For Fedora/Lima
+
 ```
