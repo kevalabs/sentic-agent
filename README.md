@@ -74,6 +74,12 @@ sudo sentic-agent config --server "https://your-sentic-server:8080"
 sudo systemctl start sentic-agent
 
 ```
+## Documentation 📚
+- [Architecture & Engineering](docs/engineering/) — The mental model of Sentic.
+- [Decision Records (ADRs)](docs/adr/) — Why we made specific choices.
+- [Research & Experiments](docs/research/) — Raw logs from our test labs.
+- [User Guides](docs/user-guides/) — How to install and debug.
+
 ## 🤝 Contributing
 
 **sentic agent** is open source (Apache 2.0). We welcome contributions from the community, especially in eBPF probe development.
