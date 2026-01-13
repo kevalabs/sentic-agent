@@ -6,6 +6,11 @@ members = [
     "crates/sentic-common",
     "crates/xtask",
 ]
+default-members = [
+    "crates/sentic-agent",
+    "crates/sentic-common",
+    "crates/xtask",
+]
 
 [workspace.package]
 edition = "2024"

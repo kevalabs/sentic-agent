@@ -58,6 +58,40 @@ graph LR
 
 * bpftool (Required for debugging and inspection)
 
+### 🏗️ Building from Source
+
+**1. Prerequisites**
+* **Rust Nightly:** Required for eBPF compilation.
+  ```bash
+  rustup toolchain install nightly --component rust-src
+  ```
+* **bpf-linker:**
+  ```bash
+  cargo install bpf-linker
+  ```
+* **System Dependencies:**
+  * Fedora: `sudo dnf install clang llvm elfutils-libelf-devel`
+  * Ubuntu: `sudo apt install clang llvm libelf-dev`
+
+**2. Compilation**
+We use `xtask` to orchestrate builds (compiling kernel probes + user space).
+
+```bash
+# 1. Build the eBPF kernel probes
+cargo xtask build-ebpf
+
+# 2. Build the user-space agent
+cargo build
+```
+
+**3. Running Locally**
+Root privileges are required to load eBPF programs.
+
+```bash
+RUST_LOG=info sudo ./target/debug/sentic-agent
+```
+
+
 ## Installation (Community Edition)
 
 ```bash
