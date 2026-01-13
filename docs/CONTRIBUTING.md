@@ -33,6 +33,41 @@ When your code is ready:
 
 ---
 
+## 🏗️ Building and Running
+
+### Prerequisites
+* **Rust Nightly:** Required for eBPF compilation.
+  ```bash
+  rustup toolchain install nightly --component rust-src
+  ```
+* **bpf-linker:**
+  ```bash
+  cargo install bpf-linker
+  ```
+* **System Dependencies:**
+  * Fedora: `sudo dnf install clang llvm elfutils-libelf-devel`
+  * Ubuntu: `sudo apt install clang llvm libelf-dev`
+
+### Compilation
+We use `xtask` to orchestrate builds (compiling kernel probes + user space).
+
+```bash
+# 1. Build the eBPF kernel probes
+cargo xtask build-ebpf
+
+# 2. Build the user-space agent
+cargo build
+```
+
+### Running Locally
+Root privileges are required to load eBPF programs.
+
+```bash
+RUST_LOG=info sudo ./target/debug/sentic-agent
+```
+
+---
+
 ## ⚖️ Rules of Engagement
 * **Signed-off-by:** We require the Developer Certificate of Origin (DCO). Use `git commit -s`.
 * **ADR Requirement:** Major architectural changes (e.g., new eBPF hooks) must be accompanied by an [ADR](../adr/).
