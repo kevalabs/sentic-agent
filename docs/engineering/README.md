@@ -6,7 +6,7 @@ This directory serves as the technical "Source of Truth" for the Sentic Agent. U
 
 | Document | Reason for Existence | Target Audience |
 | :--- | :--- | :--- |
-| **[sentic.md](./sentic.md)** | **The Core Philosophy.** Defines the transition from Java to Rust and our "AI-native" approach to kernel observability. | All Contributors |
+| **[high-level-overview.md](./high-level-overview.md)** | **High-Level Overview.** Explains the high level overview of the Sentic Agent. | All Contributors |
 | **[cgroup-v2-identity.md](./cgroup-v2-identity.md)** | **Identity Foundation.** Explains why we require Kernel 5.4+ and how we use the Unified Hierarchy for stable process attribution. | SREs / Core Devs |
 | **[ebpf-pipeline.md](./ebpf-pipeline.md)** | **Data Flow.** Details the high-performance path from BPF maps in the kernel to the Rust userspace agent. | Rust Developers |
 | **[debugging-internals.md](./debugging-internals.md)** | **Troubleshooting the Agent.** How to debug BPF verifier errors and map corruption without crashing the host kernel. | Core Maintainers |
